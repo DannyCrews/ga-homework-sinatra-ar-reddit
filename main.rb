@@ -26,7 +26,7 @@ get '/newt' do
 end
 
 get '/newest' do
-	@reddits = Reddit.all
+	@reddits = Reddit.all.order('created_at DESC')
 	erb :newest
 end
 

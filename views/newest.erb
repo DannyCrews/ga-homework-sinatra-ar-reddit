@@ -4,7 +4,7 @@
 <% @reddits.each do |reddit| %>
 
 <div class="reddit_container">
-	<a href="<%= reddit.id %>"><h2><%= reddit.title %></h2></a>
+	<a href="<%= reddit.id %>"><h2><%= reddit.title %><%= reddit.created_at %></h2></a>
 <%= reddit.author %><br/><%= reddit.url %> <br/><%= reddit.body %>
 </div>
 
