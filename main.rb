@@ -17,10 +17,12 @@ class Reddit < ActiveRecord::Base
 end 
 
 # This is for showing the form to create new reddits
-get '/newu' do
+post '/newu' do
 	erb :reddit_newu
 end
 
-get '/newt' do
+post '/newt' do
 	erb :reddit_newt
 end
+
+get
