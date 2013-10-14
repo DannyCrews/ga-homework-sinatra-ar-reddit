@@ -11,7 +11,16 @@ set :database, {adapter: 'postgresql',
 								host: 'localhost'}
 
 
-# Define the object classes for the databases
+# Define the object classes for the database
 class Reddit < ActiveRecord::Base
   # has_many :comments
 end 
+
+# This is for showing the form to create new reddits
+get '/newu' do
+	erb :reddit_newu
+end
+
+get '/newt' do
+	erb :reddit_newt
+end

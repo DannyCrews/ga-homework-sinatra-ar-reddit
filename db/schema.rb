@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 20131014002856) do
 
   create_table "reddits", force: true do |t|
     t.string   "title"
-    t.text     "story"
-    t.string   "author"
+    t.text     "body"
+    t.string   "url",        default: "self"
+    t.string   "author",     default: "anonymous"
     t.integer  "up_votes",   default: 0
     t.integer  "down_votes", default: 0
     t.datetime "created_at"
