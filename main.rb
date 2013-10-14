@@ -17,12 +17,30 @@ class Reddit < ActiveRecord::Base
 end 
 
 # This is for showing the form to create new reddits
-post '/newu' do
+get '/newu' do
 	erb :reddit_newu
 end
 
-post '/newt' do
+get '/newt' do
 	erb :reddit_newt
 end
 
-get
+get '/newest' do
+	@reddits = Reddit.all
+	erb :newest
+end
+
+# This is for posting a new story to the database
+post '/createu' do 
+  Reddit.create(title: params[:title],
+                        author: params[:author], 
+                        url: params[:url])
+  redirect '/newest'
+end
+
+post '/createt' do 
+  Reddit.create(title: params[:title],
+                        author: params[:author], 
+                        body: params[:body])
+  redirect '/newest'
+end

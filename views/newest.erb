@@ -1,0 +1,12 @@
+<div class="top_menu">
+
+
+<% @reddits.each do |reddit| %>
+
+<div class="reddit_container">
+	<a href="<%= reddit.id %>"><h2><%= reddit.title %></h2></a>
+<%= reddit.author %><br/><%= reddit.url %> <br/><%= reddit.body %>
+</div>
+
+<% end %>
+
