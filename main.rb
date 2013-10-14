@@ -30,6 +30,13 @@ get '/newest' do
 	erb :newest
 end
 
+# get '/newest/vote' do 
+# @reddit = Reddit.find(params[:id])
+# 	erb :newest
+# end
+
+
+
 # This is for posting a new story to the database
 post '/createu' do 
   Reddit.create(title: params[:title],
@@ -44,3 +51,35 @@ post '/createt' do
                         body: params[:body])
   redirect '/newest'
 end
+
+# post '/reddits/:id' do
+#   reddit = Reddit.find(params[:id],
+#   				up_votes: params[:up_votes])
+#   reddit.up_votes += 1
+#   reddit.save
+#   redirect '/newest'
+# end
+
+# post '/reddits/:id' do
+#   reddit = Reddit.find(params[:id],
+#   					down_votes: params[:down_votes])
+
+
+
+#   reddit.down_votes += 1
+#   reddit.save
+#   redirect '/newest'
+# end
+
+
+
+
+
+
+
+
+
+
+
+
+

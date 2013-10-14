@@ -1,12 +1,28 @@
 <div class="top_menu">
 
 
-<% @reddits.each do |reddit| %>
+	<% @reddits.each do |reddit| %>
 
-<div class="reddit_container">
-	<a href="<%= reddit.id %>"><h2><%= reddit.title %><%= reddit.created_at %></h2></a>
-<%= reddit.author %><br/><%= reddit.url %> <br/><%= reddit.body %>
-</div>
+	<div class="reddit_container">
+		<a href="<%= reddit.id %>"><h2><%= reddit.title %><%= reddit.created_at %></h2></a>
+		<%= reddit.author %><br/><%= reddit.url %> <br/><%= reddit.body %><br/><%= reddit.up_votes %><br/><%= reddit.down_votes %><br/>s
+	</div>
 
-<% end %>
+
+
+<!-- 
+	<div class="voting"> 
+
+		<form action="//update" method="post">
+			<input type="image" src="./up-grey.png" name="up_votes" value=1 alt="Up-Vote">
+		</form>
+
+		<form action="//update" method="post">
+			<input type="image" src="./down-grey.png" name="down_votes" value=1 alt="Down-Vote">
+		</form>
+
+	</div>
+ -->
+
+	<% end %>
 
