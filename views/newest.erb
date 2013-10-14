@@ -9,20 +9,16 @@
 	</div>
 
 
+<div class="voting_button">
+<form action="newest/<%= reddit.id %>/up_votes" method="post">
+<input type="image" src="./up-grey.png" name="upvoted" value="upvote" />
+</form>
 
-<!-- 
-	<div class="voting"> 
+<form action="newest/<%= reddit.id %>/down_votes" method="post">
+<input type="image" src="./down-grey.png" name="downvoted" value="downvote" />
+</form>
+</div>
 
-		<form action="//update" method="post">
-			<input type="image" src="./up-grey.png" name="up_votes" value=1 alt="Up-Vote">
-		</form>
-
-		<form action="//update" method="post">
-			<input type="image" src="./down-grey.png" name="down_votes" value=1 alt="Down-Vote">
-		</form>
-
-	</div>
- -->
 
 	<% end %>
 

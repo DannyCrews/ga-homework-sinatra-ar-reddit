@@ -30,10 +30,10 @@ get '/newest' do
 	erb :newest
 end
 
-# get '/newest/vote' do 
-# @reddit = Reddit.find(params[:id])
-# 	erb :newest
-# end
+get '/newest/vote' do 
+@reddit = Reddit.find(params[:id])
+erb :newest
+end
 
 
 
@@ -52,24 +52,21 @@ post '/createt' do
   redirect '/newest'
 end
 
-# post '/reddits/:id' do
-#   reddit = Reddit.find(params[:id],
-#   				up_votes: params[:up_votes])
-#   reddit.up_votes += 1
-#   reddit.save
-#   redirect '/newest'
-# end
 
-# post '/reddits/:id' do
-#   reddit = Reddit.find(params[:id],
-#   					down_votes: params[:down_votes])
+post '/newest/:id/up_votes' do
+  upvoted = Reddit.find(params[:id])
+  upvoted[:up_votes] += 1
+  upvoted.save
+  redirect "/newest"
+end
 
+post '/newest/:id/down_votes' do
+  downvoted = Reddit.find(params[:id])
+  downvoted[:down_votes] += 1
+  downvoted.save
+  redirect "/newest"
+end
 
-
-#   reddit.down_votes += 1
-#   reddit.save
-#   redirect '/newest'
-# end
 
 
 
