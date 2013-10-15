@@ -47,6 +47,12 @@ get '/newest/vote' do
   erb :newest
 end
 
+# displays a specific subreddit
+get '/:id' do
+@reddit = Reddit.find(params[:id])
+erb  :sub_reddit_name
+  end
+
 
 
 # This is for posting a new story to the database
