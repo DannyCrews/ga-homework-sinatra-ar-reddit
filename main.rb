@@ -7,8 +7,8 @@ require 'sinatra/activerecord'
 
 # Define the connection to the database via Activerecord
 set :database, {adapter: 'postgresql',
-								database: 'my_reddit_db',
-								host: 'localhost'}
+  database: 'my_reddit_db',
+  host: 'localhost'}
 
 
 # Define the object classes for the database
@@ -22,8 +22,20 @@ get '/newu' do
 end
 
 get '/newt' do
-	erb :reddit_newt
+  erb :reddit_newt
 end
+
+get '/' do
+  @reddits = Reddit.all.order('up_votes DESC')
+  erb :popular
+end
+
+get '/vote' do 
+  @reddit = Reddit.find(params[:id])
+  erb :popular
+end
+
+
 
 get '/newest' do
 	@reddits = Reddit.all.order('created_at DESC')
@@ -31,8 +43,8 @@ get '/newest' do
 end
 
 get '/newest/vote' do 
-@reddit = Reddit.find(params[:id])
-erb :newest
+  @reddit = Reddit.find(params[:id])
+  erb :newest
 end
 
 
@@ -40,15 +52,15 @@ end
 # This is for posting a new story to the database
 post '/createu' do 
   Reddit.create(title: params[:title],
-                        author: params[:author], 
-                        url: params[:url])
+    author: params[:author], 
+    url: params[:url])
   redirect '/newest'
 end
 
 post '/createt' do 
   Reddit.create(title: params[:title],
-                        author: params[:author], 
-                        body: params[:body])
+    author: params[:author], 
+    body: params[:body])
   redirect '/newest'
 end
 
@@ -67,6 +79,19 @@ post '/newest/:id/down_votes' do
   redirect "/newest"
 end
 
+post '/:id/up_votes' do
+  upvoted = Reddit.find(params[:id])
+  upvoted[:up_votes] += 1
+  upvoted.save
+  redirect "/"
+end
+
+post '/:id/down_votes' do
+  downvoted = Reddit.find(params[:id])
+  downvoted[:down_votes] += 1
+  downvoted.save
+  redirect "/"
+end
 
 
 

@@ -14,11 +14,11 @@
 
 
 	<div class="voting_button">
-		<form action="newest/<%= reddit.id %>/up_votes" method="post">
+		<form action="/<%= reddit.id %>/up_votes" method="post">
 			<input type="image" src="./up-grey.png" name="upvoted" value="upvote" />
 		</form>
 
-		<form action="newest/<%= reddit.id %>/down_votes" method="post">
+		<form action="/<%= reddit.id %>/down_votes" method="post">
 			<input type="image" src="./down-grey.png" name="downvoted" value="downvote" />
 		</form>
 	</div>
